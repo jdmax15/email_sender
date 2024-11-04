@@ -9,6 +9,7 @@ from selenium.webdriver.firefox.options import Options
 import time, os
 
 def send_email(destEmail, message):
+    # Options to run browser headless mode.
     options = Options()
     options.add_argument('--headless')
     
@@ -35,9 +36,11 @@ def send_email(destEmail, message):
         emailElem.send_keys(userName)
         print('Username entered...')
         
+        # Click next
         nextButton = browser.find_element(By.CSS_SELECTOR, '.VfPpkd-LgbsSe-OWXEXe-k8QpJ > span:nth-child(4)')
         nextButton.click()
         
+        # Enter password
         passwordElem = WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.NAME, "Passwd")))
         passwordElem.send_keys(passWord)
         passwordElem.send_keys(Keys.ENTER)
